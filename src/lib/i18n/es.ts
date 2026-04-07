@@ -34,7 +34,7 @@ export const es: Dictionary = {
   featured: {
     sectionTitle: "Trajes destacados",
     sectionSubtitle:
-      "Hasta cuatro favoritos disponibles en tienda. Abre el enlace del proveedor para ver la galería completa.",
+      "Hasta cuatro favoritos disponibles en tienda. Se pueden mostrar fotos desde Supabase o imágenes directas de JFW configuradas en tu catálogo.",
     empty:
       "Los trajes destacados aparecerán aquí cuando el catálogo esté conectado. Revisa Supabase y las variables de entorno.",
     discount: "{percent}% de descuento",
@@ -51,6 +51,15 @@ export const es: Dictionary = {
     line2:
       "Trajes formales vía Jim’s Formal Wear — programas de diseñador reales",
     line3: "Weslaco, Texas — pruébate en persona y sal listo para tu evento",
+  },
+  contact: {
+    title: "Visítanos o contáctanos",
+    facebook: "Facebook",
+    whatsapp: "WhatsApp",
+    location: "Ubicación de la tienda",
+    openInMaps: "Abrir en Maps",
+    whatsappPrefill:
+      "Hola, quiero información sobre renta de trajes y cupones disponibles.",
   },
   claim: {
     cardCta: "Obtener cupón",

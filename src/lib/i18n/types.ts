@@ -44,6 +44,14 @@ export type Dictionary = {
     line2: string;
     line3: string;
   };
+  contact: {
+    title: string;
+    facebook: string;
+    whatsapp: string;
+    location: string;
+    openInMaps: string;
+    whatsappPrefill: string;
+  };
   claim: {
     cardCta: string;
     modalTitle: string;

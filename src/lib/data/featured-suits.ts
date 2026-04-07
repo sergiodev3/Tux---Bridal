@@ -9,6 +9,7 @@ export type FeaturedSuitRow = {
   discount_percent: number;
   stock_type: "in_stock" | "special_order";
   image_url: string | null;
+  jfw_image_url: string | null;
   jfw_url: string | null;
 };
 
@@ -22,7 +23,7 @@ export async function getFeaturedSuits(): Promise<FeaturedSuitRow[]> {
   const { data, error } = await supabase
     .from("suit_categories")
     .select(
-      "id, name, description, discount_percent, stock_type, image_url, jfw_url",
+      "id, name, description, discount_percent, stock_type, image_url, jfw_image_url, jfw_url",
     )
     .eq("is_active", true)
     .eq("is_featured", true)
@@ -44,7 +45,9 @@ export async function getFeaturedSuits(): Promise<FeaturedSuitRow[]> {
     description: (row.description as string) ?? "",
     discount_percent: Number(row.discount_percent),
     stock_type: normalizeStockType(row.stock_type),
-    image_url: (row.image_url as string | null) ?? null,
+    image_url:
+      (row.jfw_image_url as string | null) ?? (row.image_url as string | null) ?? null,
+    jfw_image_url: (row.jfw_image_url as string | null) ?? null,
     jfw_url: (row.jfw_url as string | null) ?? null,
   }));
 }

@@ -8,6 +8,7 @@ import { getFeaturedSuits } from "@/lib/data/featured-suits";
 import { type Locale, isLocale } from "@/lib/i18n/config";
 import { getDictionary } from "@/lib/i18n/get-dictionary";
 import { getSeasonEndIso } from "@/lib/marketing/season-end";
+import { getBusinessContactLinks } from "@/lib/business/contact-links";
 
 export const dynamic = "force-dynamic";
 
@@ -34,6 +35,7 @@ export default async function MarketingHomePage({ params }: Props) {
   ).format(new Date(seasonEndIso));
 
   const suits = await getFeaturedSuits();
+  const contactLinks = getBusinessContactLinks(dict);
 
   return (
     <>
@@ -45,7 +47,7 @@ export default async function MarketingHomePage({ params }: Props) {
           staticEndLabel={staticEndLabel}
         />
         <FeaturedSuitsSection suits={suits} dict={dict} locale={locale} />
-        <TrustBlock dict={dict} />
+        <TrustBlock dict={dict} contactLinks={contactLinks} />
       </main>
     </>
   );

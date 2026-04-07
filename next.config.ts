@@ -12,21 +12,35 @@ function supabaseStorageHost(): string | undefined {
 
 const supabaseHost = supabaseStorageHost();
 
+const jfwPatterns = [
+  {
+    protocol: "https" as const,
+    hostname: "www.jimsformalwear.com",
+    pathname: "/**",
+  },
+  {
+    protocol: "https" as const,
+    hostname: "jimsformalwear.com",
+    pathname: "/**",
+  },
+];
+
 const nextConfig: NextConfig = {
   serverExternalPackages: ["@react-pdf/renderer"],
-  ...(supabaseHost
-    ? {
-        images: {
-          remotePatterns: [
+  images: {
+    remotePatterns: [
+      ...(supabaseHost
+        ? [
             {
-              protocol: "https",
+              protocol: "https" as const,
               hostname: supabaseHost,
               pathname: "/storage/v1/object/public/**",
             },
-          ],
-        },
-      }
-    : {}),
+          ]
+        : []),
+      ...jfwPatterns,
+    ],
+  },
 };
 
 export default nextConfig;

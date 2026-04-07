@@ -34,7 +34,7 @@ export const en: Dictionary = {
   featured: {
     sectionTitle: "Featured suits",
     sectionSubtitle:
-      "Up to four in-stock highlights. Tap a supplier link for full galleries — images here are ours or placeholders.",
+      "Up to four in-stock highlights. We can show photos hosted in Supabase or direct JFW images configured in your catalog.",
     empty:
       "Featured styles will appear here once the catalog is connected. Check your Supabase data and env keys.",
     discount: "{percent}% off",
@@ -51,6 +51,15 @@ export const en: Dictionary = {
     line2:
       "Formal wear sourced through Jim’s Formal Wear — real designer programs",
     line3: "Weslaco, Texas — try on in person, walk out ready for your event",
+  },
+  contact: {
+    title: "Visit or contact us",
+    facebook: "Facebook",
+    whatsapp: "WhatsApp",
+    location: "Store location",
+    openInMaps: "Open in Maps",
+    whatsappPrefill:
+      "Hi! I want information about suit rentals and available coupons.",
   },
   claim: {
     cardCta: "Get coupon",
