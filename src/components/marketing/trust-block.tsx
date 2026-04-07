@@ -1,5 +1,6 @@
 import type { Dictionary } from "@/lib/i18n/types";
 import type { ContactLinks } from "@/lib/business/contact-links";
+import { RouteDeepLinkButton } from "./route-deeplink-button";
 
 type Props = Readonly<{
   dict: Dictionary;
@@ -57,6 +58,15 @@ export function TrustBlock({ dict, contactLinks }: Props) {
           >
             {dict.contact.openInMaps}
           </a>
+        </div>
+
+        <div className="mt-3">
+          <RouteDeepLinkButton
+            label={dict.contact.routeButton}
+            googleUrl={contactLinks.routeGoogleUrl}
+            appleUrl={contactLinks.routeAppleUrl}
+            wazeUrl={contactLinks.routeWazeUrl}
+          />
         </div>
 
         <div className="mt-6 rounded-2xl bg-white px-5 py-4 text-center ring-1 ring-stone-200/80">

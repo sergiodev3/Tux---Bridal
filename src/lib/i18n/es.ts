@@ -58,6 +58,7 @@ export const es: Dictionary = {
     whatsapp: "WhatsApp",
     location: "Ubicación de la tienda",
     openInMaps: "Abrir en Maps",
+    routeButton: "Cómo llegar",
     whatsappPrefill:
       "Hola, quiero información sobre renta de trajes y cupones disponibles.",
   },

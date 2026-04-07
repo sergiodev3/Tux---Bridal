@@ -58,6 +58,7 @@ export const en: Dictionary = {
     whatsapp: "WhatsApp",
     location: "Store location",
     openInMaps: "Open in Maps",
+    routeButton: "Get directions",
     whatsappPrefill:
       "Hi! I want information about suit rentals and available coupons.",
   },

@@ -23,6 +23,11 @@ const jfwPatterns = [
     hostname: "jimsformalwear.com",
     pathname: "/**",
   },
+  {
+    protocol: "https" as const,
+    hostname: "firebasestorage.googleapis.com",
+    pathname: "/v0/b/jfw-omni-dev-image-cache/o/**",
+  },
 ];
 
 const nextConfig: NextConfig = {

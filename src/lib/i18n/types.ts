@@ -50,6 +50,7 @@ export type Dictionary = {
     whatsapp: string;
     location: string;
     openInMaps: string;
+    routeButton: string;
     whatsappPrefill: string;
   };
   claim: {

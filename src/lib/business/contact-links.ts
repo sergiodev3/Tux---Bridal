@@ -8,6 +8,9 @@ export type ContactLinks = Readonly<{
   whatsappUrl: string;
   storeAddress: string;
   mapsUrl: string;
+  routeGoogleUrl: string;
+  routeAppleUrl: string;
+  routeWazeUrl: string;
 }>;
 
 const DEFAULT_FACEBOOK_URL = "https://www.facebook.com/tuxbri4less/";
@@ -34,11 +37,18 @@ export function getBusinessContactLinks(dict: Dictionary): ContactLinks {
   const phone = normalizePhone(rawPhone);
   const message = dict.contact.whatsappPrefill;
   const whatsappUrl = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+  const encodedAddress = encodeURIComponent(storeAddress);
+  const routeGoogleUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodedAddress}&travelmode=driving`;
+  const routeAppleUrl = `https://maps.apple.com/?daddr=${encodedAddress}&dirflg=d`;
+  const routeWazeUrl = `https://waze.com/ul?q=${encodedAddress}&navigate=yes`;
 
   return {
     facebookUrl,
     whatsappUrl,
     storeAddress,
     mapsUrl,
+    routeGoogleUrl,
+    routeAppleUrl,
+    routeWazeUrl,
   };
 }
