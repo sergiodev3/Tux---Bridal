@@ -38,7 +38,18 @@ La app ya **compila y arranca** con rutas localizadas:
 | **Rendimiento de página** | `export const dynamic = "force-dynamic"` en la home de marketing                                                                                                                   |
 | **Imágenes**              | `next.config.ts` — `remotePatterns` para el host de `NEXT_PUBLIC_SUPABASE_URL` (bucket público)                                                                                    |
 
-### Resumen técnico compartido (etapas 1–3)
+### Etapa 4 — Cupón por email — completada
+
+- **`ClaimCouponModal`** + **`FeaturedSuitsGrid`** (cliente): botón “Get coupon” / “Obtener cupón” en cada tarjeta.
+- **React Hook Form** + **Zod**; **Server Action** `claimCouponAction` → RPC `claim_coupon` (service role).
+- Reintento del mismo traje **sin error** (devuelve cupón existente); **RATE_LIMIT** con mensaje claro EN/ES.
+
+### Etapa 5 — PDF — completada (núcleo)
+
+- **`CouponPdfDocument`** + **`GET /api/coupon-pdf`**: descarga con `code` y `locale`.
+- Textos de pie **bilingües**; negocio / dirección / teléfono desde variables `NEXT_PUBLIC_*`.
+
+### Resumen técnico compartido (etapas 1–5)
 
 | Área                     | Contenido                                                                                          |
 | ------------------------ | -------------------------------------------------------------------------------------------------- |
@@ -49,6 +60,7 @@ La app ya **compila y arranca** con rutas localizadas:
 | **Supabase**             | `src/lib/supabase/server.ts`, `browser.ts`, `service.ts`                                           |
 | **Tipos DB**             | `src/types/database.ts` — **placeholder** hasta `supabase gen types`                               |
 | **Cupón / DB**           | `supabase/migrations/20260406120000_init.sql`                                                      |
+| **Formularios / PDF**    | `react-hook-form`, `@hookform/resolvers`, `@react-pdf/renderer`                                    |
 
 ### Base de datos (Supabase / PostgreSQL)
 
@@ -101,18 +113,7 @@ npx supabase gen types typescript --project-id <TU_PROJECT_ID> > src/types/datab
 
 ## Próximas etapas sugeridas
 
-### Etapa 4 — Formulario, Server Action y descarga (siguiente)
-
-- Modal o formulario inline: solo **email**, **React Hook Form + Zod**.
-- **Server Action** que llame a `claim_coupon` con el cliente de **service role**; manejo explícito de errores de Supabase y de `RATE_LIMIT`.
-- Tras éxito: botón **“Descargar cupón”** en la misma pantalla (PDF generado en servidor o stream).
-- `revalidatePath` / caché donde corresponda.
-
-### Etapa 5 — PDF del cupón (`@react-pdf/renderer`)
-
-- Plantilla con nombre del negocio, logo (placeholder), traje, badge de disponibilidad, % de descuento, código grande, vencimiento, dirección/teléfono, nota legal EN/ES.
-
-### Etapa 6 — Despliegue y operación
+### Etapa 6 — Despliegue y operación (siguiente)
 
 - Proyecto en **Vercel**, variables de entorno de producción.
 - Dominio y QR del flyer apuntando a la URL pública.

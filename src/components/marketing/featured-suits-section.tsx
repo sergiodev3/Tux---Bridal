@@ -1,14 +1,16 @@
 import type { FeaturedSuitRow } from "@/lib/data/featured-suits";
+import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/types";
 
-import { SuitCard } from "./suit-card";
+import { FeaturedSuitsGrid } from "./featured-suits-grid";
 
 type Props = Readonly<{
   suits: FeaturedSuitRow[];
   dict: Dictionary;
+  locale: Locale;
 }>;
 
-export function FeaturedSuitsSection({ suits, dict }: Props) {
+export function FeaturedSuitsSection({ suits, dict, locale }: Props) {
   return (
     <section
       id="featured-suits"
@@ -31,13 +33,7 @@ export function FeaturedSuitsSection({ suits, dict }: Props) {
             {dict.featured.empty}
           </p>
         ) : (
-          <ul className="mt-10 grid list-none grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-2 xl:grid-cols-4">
-            {suits.map((suit) => (
-              <li key={suit.id}>
-                <SuitCard suit={suit} dict={dict} />
-              </li>
-            ))}
-          </ul>
+          <FeaturedSuitsGrid suits={suits} dict={dict} locale={locale} />
         )}
       </div>
     </section>

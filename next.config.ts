@@ -13,6 +13,7 @@ function supabaseStorageHost(): string | undefined {
 const supabaseHost = supabaseStorageHost();
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ["@react-pdf/renderer"],
   ...(supabaseHost
     ? {
         images: {

@@ -44,7 +44,7 @@ export default async function MarketingHomePage({ params }: Props) {
           seasonEndIso={seasonEndIso}
           staticEndLabel={staticEndLabel}
         />
-        <FeaturedSuitsSection suits={suits} dict={dict} />
+        <FeaturedSuitsSection suits={suits} dict={dict} locale={locale} />
         <TrustBlock dict={dict} />
       </main>
     </>

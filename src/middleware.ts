@@ -12,6 +12,10 @@ function pathnameHasLocale(pathname: string): boolean {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  if (pathname.startsWith("/api")) {
+    return NextResponse.next();
+  }
+
   if (pathnameHasLocale(pathname)) {
     return NextResponse.next();
   }

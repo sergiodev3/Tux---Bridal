@@ -44,4 +44,29 @@ export type Dictionary = {
     line2: string;
     line3: string;
   };
+  claim: {
+    cardCta: string;
+    modalTitle: string;
+    suitLabel: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    submit: string;
+    submitting: string;
+    cancel: string;
+    close: string;
+    download: string;
+    successTitle: string;
+    successHint: string;
+    successReusedHint: string;
+    errorEmail: string;
+    errorRateLimit: string;
+    errorGeneric: string;
+    errorNotFound: string;
+  };
+  pdf: {
+    codeCaption: string;
+    expiresCaption: string;
+    footerEn: string;
+    footerEs: string;
+  };
 };

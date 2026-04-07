@@ -52,4 +52,31 @@ export const en: Dictionary = {
       "Formal wear sourced through Jim’s Formal Wear — real designer programs",
     line3: "Weslaco, Texas — try on in person, walk out ready for your event",
   },
+  claim: {
+    cardCta: "Get coupon",
+    modalTitle: "Claim your coupon",
+    suitLabel: "Selected suit",
+    emailLabel: "Email",
+    emailPlaceholder: "you@example.com",
+    submit: "Send my coupon",
+    submitting: "Sending…",
+    cancel: "Cancel",
+    close: "Close",
+    download: "Download your coupon (PDF)",
+    successTitle: "You’re all set",
+    successHint: "Download your PDF and show it in store.",
+    successReusedHint:
+      "You already had a coupon for this suit — download it again anytime.",
+    errorEmail: "Enter a valid email address.",
+    errorRateLimit:
+      "You’ve claimed several coupons recently. Please try again tomorrow or visit us in store.",
+    errorGeneric: "Something went wrong. Please try again in a moment.",
+    errorNotFound: "That suit is no longer available for coupons.",
+  },
+  pdf: {
+    codeCaption: "Coupon code",
+    expiresCaption: "Expires:",
+    footerEn: "Show this coupon in-store to redeem.",
+    footerEs: "Presenta este cupón en tienda para canjearlo.",
+  },
 };

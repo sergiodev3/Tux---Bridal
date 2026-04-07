@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 
 import type { FeaturedSuitRow } from "@/lib/data/featured-suits";
 import type { Dictionary } from "@/lib/i18n/types";
@@ -9,9 +10,10 @@ import { StockTypeBadge } from "./stock-type-badge";
 type Props = Readonly<{
   suit: FeaturedSuitRow;
   dict: Dictionary;
+  actions?: ReactNode;
 }>;
 
-export function SuitCard({ suit, dict }: Props) {
+export function SuitCard({ suit, dict, actions }: Props) {
   const discountLabel = dict.featured.discount.replace(
     "{percent}",
     String(suit.discount_percent),
@@ -68,6 +70,9 @@ export function SuitCard({ suit, dict }: Props) {
           >
             {dict.featured.seePhotos}
           </Link>
+        ) : null}
+        {actions ? (
+          <div className="mt-4 border-t border-stone-100 pt-4">{actions}</div>
         ) : null}
       </div>
     </article>

@@ -52,4 +52,31 @@ export const es: Dictionary = {
       "Trajes formales vía Jim’s Formal Wear — programas de diseñador reales",
     line3: "Weslaco, Texas — pruébate en persona y sal listo para tu evento",
   },
+  claim: {
+    cardCta: "Obtener cupón",
+    modalTitle: "Reclama tu cupón",
+    suitLabel: "Traje seleccionado",
+    emailLabel: "Correo electrónico",
+    emailPlaceholder: "tu@correo.com",
+    submit: "Enviar mi cupón",
+    submitting: "Enviando…",
+    cancel: "Cancelar",
+    close: "Cerrar",
+    download: "Descargar cupón (PDF)",
+    successTitle: "Listo",
+    successHint: "Descarga el PDF y muéstralo en tienda.",
+    successReusedHint:
+      "Ya tenías un cupón para este traje — puedes volver a descargarlo.",
+    errorEmail: "Introduce un correo electrónico válido.",
+    errorRateLimit:
+      "Has reclamado varios cupones recientemente. Vuelve a intentarlo mañana o visítanos en tienda.",
+    errorGeneric: "Algo salió mal. Inténtalo de nuevo en unos momentos.",
+    errorNotFound: "Ese traje ya no está disponible para cupones.",
+  },
+  pdf: {
+    codeCaption: "Código del cupón",
+    expiresCaption: "Vence:",
+    footerEn: "Show this coupon in-store to redeem.",
+    footerEs: "Presenta este cupón en tienda para canjearlo.",
+  },
 };
