@@ -4,22 +4,38 @@ Aplicación web para un negocio de alquiler de trajes formales: los clientes esc
 
 ---
 
-## Estado actual: etapa 1 (scaffolding) — completada
+## Estado actual
 
-Esta etapa deja **lista la base técnica** del proyecto: configuración de Next.js, validación de entorno, clientes de Supabase y **esquema completo en PostgreSQL** (incluida la lógica de cupones en base de datos). **Aún no hay páginas visibles ni flujo de usuario** (`page.tsx`, `layout.tsx`, componentes de UI, PDF ni acciones de servidor de negocio están **fuera de alcance** hasta la etapa 2).
+### Etapa 1 (scaffolding) — completada
 
-### Qué incluye la etapa 1
+Dejó **lista la base técnica**: Next.js, validación de entorno (**Zod**), clientes de Supabase y **esquema PostgreSQL** completo (RPC `claim_coupon`, RLS, seed).
 
-| Área | Contenido |
-|------|-----------|
-| **Framework** | Next.js 15 (App Router), React 19, TypeScript en modo **strict** + `noUncheckedIndexedAccess` |
-| **Estilos** | Tailwind CSS v4 (`@tailwindcss/postcss`, `src/app/globals.css`) |
-| **Calidad** | ESLint (`next/core-web-vitals`), Prettier |
-| **Variables de entorno** | `src/lib/env.ts` — validación con **Zod** (`getPublicEnv` / `getServerEnv`) |
-| **Supabase** | `src/lib/supabase/server.ts` (anon + cookies), `browser.ts`, `service.ts` (rol de servicio, solo servidor) |
-| **Tipos DB** | `src/types/database.ts` — **placeholder**; sustituir con `supabase gen types typescript` cuando exista el proyecto |
-| **Estructura de rutas (vacía)** | `src/app/[locale]/(marketing)/` y `(coupon)/` preparados para `/en` y `/es` |
-| **Base de datos** | `supabase/migrations/20260406120000_init.sql` |
+### Etapa 2 (shell + i18n) — completada
+
+La app ya **compila y arranca** con rutas localizadas:
+
+| Área             | Contenido                                                                                                                                                      |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Rutas**        | `/` redirige a `/en`; contenido en `/en` y `/es` (`src/app/[locale]/…`)                                                                                        |
+| **Middleware**   | `src/middleware.ts` — prefijo de idioma y redirección por defecto                                                                                              |
+| **Layouts**      | `src/app/layout.tsx` (raíz, fuentes DM Sans + Cormorant Garamond) y `src/app/[locale]/layout.tsx` con `lang` en contenedor y **`generateMetadata`** por idioma |
+| **SEO**          | `alternates.languages` (`en` / `es`) en metadata de la home por locale                                                                                         |
+| **Traducciones** | `src/lib/i18n/` — `config.ts`, `en.ts`, `es.ts`, `get-dictionary.ts`, tipos en `types.ts` (base para hero, badges y CTAs de etapas posteriores)                |
+| **UI mínima**    | `src/app/[locale]/(marketing)/page.tsx` — mensaje de bienvenida, CTA aún no interactivo, muestra badges de disponibilidad (texto i18n)                         |
+| **Cabecera**     | `src/components/shell/site-header.tsx` — marca + conmutador **English / Español**                                                                              |
+| **404**          | `src/app/not-found.tsx`                                                                                                                                        |
+
+### Resumen técnico compartido (etapas 1–2)
+
+| Área                     | Contenido                                                                                          |
+| ------------------------ | -------------------------------------------------------------------------------------------------- |
+| **Framework**            | Next.js 15 (App Router), React 19, TypeScript **strict** + `noUncheckedIndexedAccess`              |
+| **Estilos**              | Tailwind CSS v4 (`@tailwindcss/postcss`, `src/app/globals.css`, tema `font-sans` / `font-display`) |
+| **Calidad**              | ESLint (`next/core-web-vitals`), Prettier                                                          |
+| **Variables de entorno** | `src/lib/env.ts` — `getPublicEnv` / `getServerEnv`                                                 |
+| **Supabase**             | `src/lib/supabase/server.ts`, `browser.ts`, `service.ts`                                           |
+| **Tipos DB**             | `src/types/database.ts` — **placeholder** hasta `supabase gen types`                               |
+| **Cupón / DB**           | `supabase/migrations/20260406120000_init.sql`                                                      |
 
 ### Base de datos (Supabase / PostgreSQL)
 
@@ -43,16 +59,20 @@ Copia `.env.example` a `.env.local` y completa al menos:
 
 Opcionales: `NEXT_PUBLIC_SITE_URL`, nombre/teléfono/dirección del negocio, base de URLs de productos JFW.
 
-### Cómo arrancar en local (después de la etapa 2)
-
-Cuando existan `layout` y `page` mínimos:
+### Cómo arrancar en local
 
 ```bash
 npm install
 npm run dev
 ```
 
-Hoy, **sin `layout.tsx` / `page.tsx`**, `next dev` no es un flujo completo hasta implementar la etapa 2.
+Abre [http://localhost:3000](http://localhost:3000) — te redirige a `/en`. Prueba también `/es`.
+
+```bash
+npm run build
+```
+
+Valida la compilación de producción.
 
 ### Aplicar la migración en Supabase
 
@@ -68,14 +88,7 @@ npx supabase gen types typescript --project-id <TU_PROJECT_ID> > src/types/datab
 
 ## Próximas etapas sugeridas
 
-### Etapa 2 — Shell de la app e internacionalización
-
-- `src/app/layout.tsx` raíz y `src/app/[locale]/layout.tsx` con `generateMetadata` donde aplique.
-- `middleware.ts`: redirección `/` → `/en`, detección o fijación de locale (`en` | `es`).
-- Primera página mínima comprobable (`next dev` / `next build`).
-- Diccionarios o archivos de traducción para textos EN/ES (hero, badges de disponibilidad, CTAs).
-
-### Etapa 3 — Landing de conversión
+### Etapa 3 — Landing de conversión (siguiente)
 
 - Hero con oferta de temporada y **cuenta regresiva** hasta fin de temporada.
 - Hasta **4** tarjetas de trajes destacados (datos desde Supabase: `is_featured = true`).
@@ -105,12 +118,12 @@ npx supabase gen types typescript --project-id <TU_PROJECT_ID> > src/types/datab
 
 ## Scripts útiles
 
-| Comando | Descripción |
-|---------|-------------|
-| `npm run dev` | Servidor de desarrollo (cuando exista página mínima) |
-| `npm run build` | Compilación de producción |
-| `npm run lint` | ESLint |
-| `npm run format` | Prettier (escribir) |
+| Comando                | Descripción               |
+| ---------------------- | ------------------------- |
+| `npm run dev`          | Servidor de desarrollo    |
+| `npm run build`        | Compilación de producción |
+| `npm run lint`         | ESLint                    |
+| `npm run format`       | Prettier (escribir)       |
 | `npm run format:check` | Prettier (solo verificar) |
 
 ---
