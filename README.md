@@ -20,12 +20,25 @@ La app ya **compila y arranca** con rutas localizadas:
 | **Middleware**   | `src/middleware.ts` — prefijo de idioma y redirección por defecto                                                                                              |
 | **Layouts**      | `src/app/layout.tsx` (raíz, fuentes DM Sans + Cormorant Garamond) y `src/app/[locale]/layout.tsx` con `lang` en contenedor y **`generateMetadata`** por idioma |
 | **SEO**          | `alternates.languages` (`en` / `es`) en metadata de la home por locale                                                                                         |
-| **Traducciones** | `src/lib/i18n/` — `config.ts`, `en.ts`, `es.ts`, `get-dictionary.ts`, tipos en `types.ts` (base para hero, badges y CTAs de etapas posteriores)                |
-| **UI mínima**    | `src/app/[locale]/(marketing)/page.tsx` — mensaje de bienvenida, CTA aún no interactivo, muestra badges de disponibilidad (texto i18n)                         |
+| **Traducciones** | `src/lib/i18n/` — diccionarios EN/ES y `getDictionary`                                                                                                         |
 | **Cabecera**     | `src/components/shell/site-header.tsx` — marca + conmutador **English / Español**                                                                              |
 | **404**          | `src/app/not-found.tsx`                                                                                                                                        |
 
-### Resumen técnico compartido (etapas 1–2)
+### Etapa 3 (landing de conversión) — completada
+
+| Área                      | Contenido                                                                                                                                                                          |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Hero**                  | Temporada graduación/prom, titular, subtítulo, nota al pie — textos en `en.ts` / `es.ts`                                                                                           |
+| **Cuenta regresiva**      | `SeasonCountdown` (cliente); fin de temporada configurable con `NEXT_PUBLIC_SEASON_END_ISO` o valor por defecto (30 jun 2026, `America/Chicago`); respeta `prefers-reduced-motion` |
+| **CTA**                   | “Get my coupon” / “Obtener mi cupón” enlaza a `#featured-suits` (scroll suave en `globals.css`)                                                                                    |
+| **Trajes destacados**     | `getFeaturedSuits()` en `src/lib/data/featured-suits.ts` — Supabase: `is_active`, `is_featured`, máx. 4 filas                                                                      |
+| **Tarjetas**              | `SuitCard`: badge de stock **in_store** / **special_order**, descuento, placeholder elegante si no hay `image_url`, `next/image` si hay imagen en Storage                          |
+| **JFW**                   | Enlace “See full photos” en nueva pestaña con `rel="noopener noreferrer"` (sin hotlink de imágenes de JFW)                                                                         |
+| **Confianza**             | `TrustBlock` — RGV, Jim’s Formal Wear, Weslaco                                                                                                                                     |
+| **Rendimiento de página** | `export const dynamic = "force-dynamic"` en la home de marketing                                                                                                                   |
+| **Imágenes**              | `next.config.ts` — `remotePatterns` para el host de `NEXT_PUBLIC_SUPABASE_URL` (bucket público)                                                                                    |
+
+### Resumen técnico compartido (etapas 1–3)
 
 | Área                     | Contenido                                                                                          |
 | ------------------------ | -------------------------------------------------------------------------------------------------- |
@@ -57,7 +70,7 @@ Copia `.env.example` a `.env.local` y completa al menos:
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
 - `SUPABASE_SERVICE_ROLE_KEY` (solo servidor; nunca exponer al cliente)
 
-Opcionales: `NEXT_PUBLIC_SITE_URL`, nombre/teléfono/dirección del negocio, base de URLs de productos JFW.
+Opcionales: `NEXT_PUBLIC_SITE_URL`, nombre/teléfono/dirección del negocio, base de URLs de productos JFW, **`NEXT_PUBLIC_SEASON_END_ISO`** (fecha/hora ISO de fin de oferta para el contador).
 
 ### Cómo arrancar en local
 
@@ -88,16 +101,7 @@ npx supabase gen types typescript --project-id <TU_PROJECT_ID> > src/types/datab
 
 ## Próximas etapas sugeridas
 
-### Etapa 3 — Landing de conversión (siguiente)
-
-- Hero con oferta de temporada y **cuenta regresiva** hasta fin de temporada.
-- Hasta **4** tarjetas de trajes destacados (datos desde Supabase: `is_featured = true`).
-- Badge prominente **“Available In Store” / “Disponible en Tienda”** vs **“By Special Order” / “Pedido Especial”**.
-- CTA principal “Get My Coupon” / “Obtener mi Cupón” visible above the fold en móvil.
-- Bloque de confianza (años, eventos, Weslaco, TX).
-- Enlace JFW en nueva pestaña (sin hotlink de imágenes).
-
-### Etapa 4 — Formulario, Server Action y descarga
+### Etapa 4 — Formulario, Server Action y descarga (siguiente)
 
 - Modal o formulario inline: solo **email**, **React Hook Form + Zod**.
 - **Server Action** que llame a `claim_coupon` con el cliente de **service role**; manejo explícito de errores de Supabase y de `RATE_LIMIT`.

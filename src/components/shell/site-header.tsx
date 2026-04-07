@@ -10,7 +10,7 @@ type Props = Readonly<{
 
 export function SiteHeader({ locale, dict }: Props) {
   return (
-    <header className="flex items-center justify-between gap-4 px-5 py-4 sm:px-8">
+    <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-stone-200/70 bg-stone-50/90 px-5 py-4 backdrop-blur-md supports-[backdrop-filter]:bg-stone-50/75 sm:px-8">
       <Link
         href={`/${locale}`}
         className="font-display text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl"

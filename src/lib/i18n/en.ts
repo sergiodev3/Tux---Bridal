@@ -13,16 +13,43 @@ export const en: Dictionary = {
     spanish: "Español",
   },
   marketing: {
-    phaseBadge: "Phase 2 — App shell & languages",
-    headline: "Formal wear for your milestone moments",
+    eyebrow: "Graduation & prom season — Weslaco",
+    headline: "Your moment deserves the right suit",
     subline:
-      "Graduations, quinceañeras, weddings — Weslaco, Texas. The full landing, coupon flow, and PDF download are coming next.",
+      "Exclusive seasonal discounts on curated formal wear. Pick a look, claim your coupon, and visit us in store.",
     ctaPrimary: "Get my coupon",
+    ctaPrimaryHint: "Jump to featured suits",
     footnote:
-      "Scan our flyer QR to return here anytime. Next: hero, countdown, and featured suits.",
+      "Scan the QR on our flyer anytime to return here. Coupon by email — next step after you choose a suit.",
+  },
+  countdown: {
+    label: "Offer ends in",
+    ended:
+      "This seasonal offer has ended — visit us in store for current styles.",
+    days: "Days",
+    hours: "Hours",
+    minutes: "Min",
+    seconds: "Sec",
+  },
+  featured: {
+    sectionTitle: "Featured suits",
+    sectionSubtitle:
+      "Up to four in-stock highlights. Tap a supplier link for full galleries — images here are ours or placeholders.",
+    empty:
+      "Featured styles will appear here once the catalog is connected. Check your Supabase data and env keys.",
+    discount: "{percent}% off",
+    seePhotos: "See full photos →",
+    imagePlaceholder: "Photo coming soon",
   },
   stock: {
     inStock: "Available in store",
     specialOrder: "By special order",
+  },
+  trust: {
+    title: "Why families trust us",
+    line1: "Years serving graduations, quinceañeras, and weddings in the RGV",
+    line2:
+      "Formal wear sourced through Jim’s Formal Wear — real designer programs",
+    line3: "Weslaco, Texas — try on in person, walk out ready for your event",
   },
 };

@@ -10,6 +10,16 @@ const optionalString = z.preprocess(
   z.string().optional(),
 );
 
+const optionalIsoDate = z.preprocess(
+  (value) => (typeof value === "string" && value === "" ? undefined : value),
+  z
+    .string()
+    .refine((s) => !Number.isNaN(Date.parse(s)), {
+      message: "NEXT_PUBLIC_SEASON_END_ISO must be a valid date string",
+    })
+    .optional(),
+);
+
 const clientEnvSchema = z.object({
   NEXT_PUBLIC_SUPABASE_URL: z.string().url(),
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
@@ -18,6 +28,8 @@ const clientEnvSchema = z.object({
   NEXT_PUBLIC_BUSINESS_PHONE: optionalString,
   NEXT_PUBLIC_BUSINESS_ADDRESS: optionalString,
   NEXT_PUBLIC_JFW_PRODUCT_BASE_URL: optionalUrl,
+  /** ISO 8601 end instant for the seasonal offer countdown (e.g. 2026-06-30T23:59:59-05:00). */
+  NEXT_PUBLIC_SEASON_END_ISO: optionalIsoDate,
 });
 
 const serverEnvSchema = clientEnvSchema.extend({
@@ -37,6 +49,7 @@ function readClientEnv(): Record<string, string | undefined> {
     NEXT_PUBLIC_BUSINESS_ADDRESS: process.env.NEXT_PUBLIC_BUSINESS_ADDRESS,
     NEXT_PUBLIC_JFW_PRODUCT_BASE_URL:
       process.env.NEXT_PUBLIC_JFW_PRODUCT_BASE_URL,
+    NEXT_PUBLIC_SEASON_END_ISO: process.env.NEXT_PUBLIC_SEASON_END_ISO,
   };
 }
 

@@ -13,16 +13,43 @@ export const es: Dictionary = {
     spanish: "Español",
   },
   marketing: {
-    phaseBadge: "Fase 2 — Estructura de la app e idiomas",
-    headline: "Trajes formales para tus momentos más importantes",
+    eyebrow: "Temporada de graduación y prom — Weslaco",
+    headline: "Tu momento merece el traje adecuado",
     subline:
-      "Graduaciones, quinceañeras, bodas — Weslaco, Texas. La landing completa, el flujo de cupón y la descarga en PDF llegan en la siguiente etapa.",
+      "Descuentos de temporada en trajes formales seleccionados. Elige un estilo, reclama tu cupón y visítanos en tienda.",
     ctaPrimary: "Obtener mi cupón",
+    ctaPrimaryHint: "Ir a trajes destacados",
     footnote:
-      "Escanea el QR del flyer para volver aquí cuando quieras. Próximo: hero, cuenta regresiva y trajes destacados.",
+      "Escanea el QR del flyer cuando quieras volver. Cupón por correo — el siguiente paso es elegir traje.",
+  },
+  countdown: {
+    label: "La oferta termina en",
+    ended:
+      "Esta oferta de temporada ha terminado — visítanos en tienda para ver los estilos actuales.",
+    days: "Días",
+    hours: "Horas",
+    minutes: "Min",
+    seconds: "Seg",
+  },
+  featured: {
+    sectionTitle: "Trajes destacados",
+    sectionSubtitle:
+      "Hasta cuatro favoritos disponibles en tienda. Abre el enlace del proveedor para ver la galería completa.",
+    empty:
+      "Los trajes destacados aparecerán aquí cuando el catálogo esté conectado. Revisa Supabase y las variables de entorno.",
+    discount: "{percent}% de descuento",
+    seePhotos: "Ver fotos completas →",
+    imagePlaceholder: "Foto próximamente",
   },
   stock: {
     inStock: "Disponible en tienda",
     specialOrder: "Pedido especial",
+  },
+  trust: {
+    title: "Por qué confían en nosotros",
+    line1: "Años sirviendo graduaciones, quinceañeras y bodas en el Valle",
+    line2:
+      "Trajes formales vía Jim’s Formal Wear — programas de diseñador reales",
+    line3: "Weslaco, Texas — pruébate en persona y sal listo para tu evento",
   },
 };
