@@ -34,9 +34,9 @@ export const en: Dictionary = {
   featured: {
     sectionTitle: "Featured suits",
     sectionSubtitle:
-      "Up to four in-stock highlights. We can show photos hosted in Supabase or direct JFW images configured in your catalog.",
+      "We have an extensive catalog of suits so you can choose the one you like the most.",
     empty:
-      "Featured styles will appear here once the catalog is connected. Check your Supabase data and env keys.",
+      "We have an extensive catalog of suits so you can choose the one you like the most.",
     discount: "{percent}% off",
     seePhotos: "See full photos →",
     imagePlaceholder: "Photo coming soon",

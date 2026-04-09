@@ -34,9 +34,9 @@ export const es: Dictionary = {
   featured: {
     sectionTitle: "Trajes destacados",
     sectionSubtitle:
-      "Hasta cuatro favoritos disponibles en tienda. Se pueden mostrar fotos desde Supabase o imágenes directas de JFW configuradas en tu catálogo.",
+      "Contamos un catálogo extenso de trajes para que puedas escojer el que mas te gusto.",
     empty:
-      "Los trajes destacados aparecerán aquí cuando el catálogo esté conectado. Revisa Supabase y las variables de entorno.",
+      "Contamos un catálogo extenso de trajes para que puedas escojer el que mas te gusto.",
     discount: "{percent}% de descuento",
     seePhotos: "Ver fotos completas →",
     imagePlaceholder: "Foto próximamente",
