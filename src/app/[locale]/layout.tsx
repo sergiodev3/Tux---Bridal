@@ -12,7 +12,7 @@ type Props = Readonly<{
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   if (!isLocale(locale)) {
-    return { title: "Tux Bridal" };
+    return { title: "Tux & Bridal 4 Less" };
   }
   const dict = getDictionary(locale);
   return {

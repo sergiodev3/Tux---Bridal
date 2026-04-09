@@ -11,15 +11,15 @@ const dmSans = DM_Sans({
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-cormorant",
   display: "swap",
 });
 
 export const metadata: Metadata = {
   title: {
-    default: "Tux Bridal",
-    template: "%s | Tux Bridal",
+    default: "Tux & Bridal 4 Less",
+    template: "%s | Tux & Bridal 4 Less",
   },
   description:
     "Formal suit rentals in Weslaco, TX — graduations, quinceañeras, weddings.",
@@ -33,8 +33,14 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${dmSans.variable} ${cormorant.variable} min-h-dvh bg-stone-50 font-sans text-stone-900 antialiased`}
+        className={`${dmSans.variable} ${cormorant.variable} min-h-dvh bg-background font-sans text-foreground antialiased`}
       >
+        <a
+          href="#main-content"
+          className="sr-only fixed left-4 top-4 z-100 rounded bg-primary px-3 py-2 text-sm font-semibold text-primary-foreground focus-visible:not-sr-only"
+        >
+          Skip to main content
+        </a>
         {children}
       </body>
     </html>

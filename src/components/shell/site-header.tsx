@@ -10,40 +10,57 @@ type Props = Readonly<{
 
 export function SiteHeader({ locale, dict }: Props) {
   return (
-    <header className="sticky top-0 z-20 flex items-center justify-between gap-4 border-b border-stone-200/70 bg-stone-50/90 px-5 py-4 backdrop-blur-md supports-[backdrop-filter]:bg-stone-50/75 sm:px-8">
-      <Link
-        href={`/${locale}`}
-        className="font-display text-xl font-semibold tracking-tight text-stone-900 sm:text-2xl"
-      >
-        {dict.shell.brand}
-      </Link>
-      <nav
-        className="flex items-center gap-1 rounded-full bg-white/80 px-1 py-1 shadow-sm ring-1 ring-stone-200/80 backdrop-blur-sm"
-        aria-label={dict.shell.localeSwitcherAria}
-      >
+    <header className="supports-backdrop-filter:bg-background/85 sticky top-0 z-20 border-b border-border bg-background/95 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-page items-center justify-between gap-4 px-5 py-3.5 sm:px-8">
+        {/* Brand lockup */}
         <Link
-          href="/en"
-          className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
-            locale === "en"
-              ? "bg-stone-900 text-stone-50"
-              : "text-stone-600 hover:bg-stone-100"
-          }`}
-          aria-current={locale === "en" ? "page" : undefined}
+          href={`/${locale}`}
+          className="group rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
         >
-          {dict.shell.english}
+          <span className="font-display text-2xl font-semibold tracking-tight text-foreground transition-[color] duration-(--animate-fast) group-hover:text-primary sm:text-3xl">
+            {dict.shell.brand}
+          </span>
         </Link>
-        <Link
-          href="/es"
-          className={`rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${
-            locale === "es"
-              ? "bg-stone-900 text-stone-50"
-              : "text-stone-600 hover:bg-stone-100"
-          }`}
-          aria-current={locale === "es" ? "page" : undefined}
+
+        {/* Locale switcher */}
+        <nav
+          className="flex items-center rounded border border-border bg-card shadow-soft"
+          aria-label={dict.shell.localeSwitcherAria}
         >
-          {dict.shell.spanish}
-        </Link>
-      </nav>
+          <Link
+            href="/en"
+            className={[
+              "rounded-l px-3 py-1.5 text-xs font-semibold uppercase tracking-widest",
+              "transition-[background-color,color] duration-(--animate-fast)",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background",
+              locale === "en"
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:bg-muted hover:text-foreground",
+            ].join(" ")}
+            aria-current={locale === "en" ? "page" : undefined}
+          >
+            {dict.shell.english}
+          </Link>
+          <span
+            className="h-5 w-px bg-border"
+            aria-hidden="true"
+          />
+          <Link
+            href="/es"
+            className={[
+              "rounded-r px-3 py-1.5 text-xs font-semibold uppercase tracking-widest",
+              "transition-[background-color,color] duration-(--animate-fast)",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-1 focus-visible:ring-offset-background",
+              locale === "es"
+                ? "bg-primary text-primary-foreground"
+                : "text-muted-foreground hover:bg-muted hover:text-foreground",
+            ].join(" ")}
+            aria-current={locale === "es" ? "page" : undefined}
+          >
+            {dict.shell.spanish}
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }

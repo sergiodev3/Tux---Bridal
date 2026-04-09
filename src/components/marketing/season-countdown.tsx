@@ -35,7 +35,7 @@ export function SeasonCountdown({ endsAtIso, labels, staticEndLabel }: Props) {
   if (now === null) {
     return (
       <div
-        className="mx-auto h-[5.5rem] max-w-md animate-pulse rounded-2xl bg-stone-200/70"
+        className="mx-auto h-24 max-w-sm animate-pulse rounded border border-border bg-muted"
         aria-hidden
       />
     );
@@ -46,7 +46,7 @@ export function SeasonCountdown({ endsAtIso, labels, staticEndLabel }: Props) {
 
   if (remainingMs <= 0) {
     return (
-      <p className="text-center text-sm font-medium leading-relaxed text-amber-900">
+      <p className="text-center text-sm font-semibold uppercase tracking-wider text-accent">
         {labels.ended}
       </p>
     );
@@ -54,8 +54,8 @@ export function SeasonCountdown({ endsAtIso, labels, staticEndLabel }: Props) {
 
   if (reducedMotion) {
     return (
-      <p className="text-center text-sm leading-relaxed text-stone-600">
-        <span className="font-semibold text-stone-800">{labels.label}:</span>{" "}
+      <p className="text-center text-sm leading-relaxed text-muted-foreground">
+        <span className="font-semibold text-foreground">{labels.label}:</span>{" "}
         {staticEndLabel}
       </p>
     );
@@ -75,12 +75,12 @@ export function SeasonCountdown({ endsAtIso, labels, staticEndLabel }: Props) {
   ];
 
   return (
-    <div className="mx-auto w-full max-w-md">
-      <p className="mb-3 text-center text-xs font-medium uppercase tracking-widest text-stone-500">
+    <div className="mx-auto w-full max-w-sm">
+      <p className="mb-3 text-center text-[10px] font-semibold uppercase tracking-[0.14em] text-accent">
         {labels.label}
       </p>
       <div
-        className="grid grid-cols-4 gap-2 sm:gap-3"
+        className="grid grid-cols-4 gap-2"
         role="timer"
         aria-live="polite"
         aria-label={`${labels.label}: ${days} ${labels.days}, ${hours} ${labels.hours}, ${minutes} ${labels.minutes}, ${seconds} ${labels.seconds}`}
@@ -88,12 +88,12 @@ export function SeasonCountdown({ endsAtIso, labels, staticEndLabel }: Props) {
         {cells.map((cell) => (
           <div
             key={cell.label}
-            className="rounded-xl bg-white/90 px-1 py-3 text-center shadow-sm ring-1 ring-stone-200/90 sm:py-4"
+            className="rounded border border-border bg-card px-1 py-3 text-center shadow-soft"
           >
-            <div className="font-display text-2xl font-semibold tabular-nums text-stone-900 sm:text-3xl">
+            <div className="font-display text-3xl font-semibold tabular-nums text-foreground">
               {cell.value}
             </div>
-            <div className="mt-1 text-[10px] font-medium uppercase tracking-wide text-stone-500 sm:text-xs">
+            <div className="mt-1.5 text-[9px] font-semibold uppercase tracking-[0.1em] text-muted-foreground">
               {cell.label}
             </div>
           </div>

@@ -2,12 +2,12 @@ import type { Dictionary } from "./types";
 
 export const es: Dictionary = {
   meta: {
-    title: "Tux Bridal — Alquiler de trajes formales en Weslaco, TX",
+    title: "Tux & Bridal 4 Less — Alquiler de trajes formales en Weslaco, TX",
     description:
       "Ofertas de temporada para graduaciones, quinceañeras y bodas. Obtén tu cupón en un solo paso.",
   },
   shell: {
-    brand: "Tux Bridal",
+    brand: "Tux & Bridal 4 Less",
     localeSwitcherAria: "Idioma",
     english: "English",
     spanish: "Español",
@@ -16,11 +16,11 @@ export const es: Dictionary = {
     eyebrow: "Temporada de graduación y prom — Weslaco",
     headline: "Tu momento merece el traje adecuado",
     subline:
-      "Descuentos de temporada en trajes formales seleccionados. Elige un estilo, reclama tu cupón y visítanos en tienda.",
+      "Descuentos de temporada en trajes formales seleccionados. Elige un estilo, descarga tu cupón y visítanos en tienda.",
     ctaPrimary: "Obtener mi cupón",
-    ctaPrimaryHint: "Ir a trajes destacados",
+    ctaPrimaryHint: "O explora los trajes abajo ↓",
     footnote:
-      "Escanea el QR del flyer cuando quieras volver. Cupón por correo — el siguiente paso es elegir traje.",
+      "Descarga tu cupón al instante — sin registro.",
   },
   countdown: {
     label: "La oferta termina en",
@@ -49,7 +49,7 @@ export const es: Dictionary = {
     title: "Por qué confían en nosotros",
     line1: "Años sirviendo graduaciones, quinceañeras y bodas en el Valle",
     line2:
-      "Trajes formales vía Jim’s Formal Wear — programas de diseñador reales",
+      "Latest Styles Available\nFast & Friendly Service\nLOOKING GREAT 4 PROM",
     line3: "Weslaco, Texas — pruébate en persona y sal listo para tu evento",
   },
   contact: {
@@ -88,5 +88,23 @@ export const es: Dictionary = {
     expiresCaption: "Vence:",
     footerEn: "Show this coupon in-store to redeem.",
     footerEs: "Presenta este cupón en tienda para canjearlo.",
+  },
+  giveaway: {
+    eyebrow: "Especial Prom — Tiempo Limitado",
+    title: "Ahorra más + Giveaway",
+    subtitle: "Obtén $10 de descuento en tu renta Y participa para GANAR",
+    discount: "$10 de descuento en tu Renta de Traje para Prom",
+    winPrize: "una tarjeta de regalo de $50 a un restaurante local 🍽️",
+    winDate: "Un ganador seleccionado el 31 de mayo de 2026.",
+    winFb: "El ganador será anunciado en nuestra página de Facebook.",
+    extraEntry: "Obtén una entrada extra si:",
+    entryFollow: "Nos sigues en Facebook 👍",
+    entryShare: "Compartes la publicación 🔁",
+    entryTag: "Etiquetas a un amigo 👥",
+    showAtRental: "DEBES MOSTRARNOS ESTO AL MOMENTO DE LA RENTA",
+    stopBy: "¡Pásate hoy y ahorra!",
+    dontMiss: "¡No te lo pierdas — Ahorra dinero Y gana grande!",
+    cta: "Obtener mi cupón",
+    close: "Quizás después",
   },
 };

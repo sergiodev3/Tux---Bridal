@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 
 import { FeaturedSuitsSection } from "@/components/marketing/featured-suits-section";
+import { GiveawayModal } from "@/components/marketing/giveaway-modal";
 import { LandingHero } from "@/components/marketing/landing-hero";
 import { TrustBlock } from "@/components/marketing/trust-block";
 import { SiteHeader } from "@/components/shell/site-header";
@@ -39,10 +40,12 @@ export default async function MarketingHomePage({ params }: Props) {
 
   return (
     <>
+      <GiveawayModal locale={locale} dict={dict} />
       <SiteHeader locale={locale} dict={dict} />
-      <main>
+      <main id="main-content" className="pb-8">
         <LandingHero
           dict={dict}
+          locale={locale}
           seasonEndIso={seasonEndIso}
           staticEndLabel={staticEndLabel}
         />

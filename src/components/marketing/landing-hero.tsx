@@ -1,34 +1,50 @@
+import type { Locale } from "@/lib/i18n/config";
 import type { Dictionary } from "@/lib/i18n/types";
+import { ButtonLink } from "@/components/ui/button";
 
 import { SeasonCountdown } from "./season-countdown";
 
 type Props = Readonly<{
   dict: Dictionary;
+  locale: Locale;
   seasonEndIso: string;
   staticEndLabel: string;
 }>;
 
-export function LandingHero({ dict, seasonEndIso, staticEndLabel }: Props) {
+export function LandingHero({ dict, locale, seasonEndIso, staticEndLabel }: Props) {
   return (
     <section
-      className="border-b border-stone-200/80 bg-gradient-to-b from-amber-50/40 via-stone-50 to-stone-50 pb-12 pt-8 sm:pb-16 sm:pt-12"
+      className="border-b border-border bg-white pb-16 pt-12 sm:pb-24 sm:pt-18"
       aria-labelledby="hero-heading"
     >
       <div className="mx-auto max-w-3xl px-5 text-center sm:px-8">
-        <p className="mb-4 inline-flex rounded-full bg-white/90 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-amber-900 ring-1 ring-amber-200/80 shadow-sm">
+        {/* Eyebrow — navy primary for maximum contrast on white */}
+        <p className="mb-7 inline-flex items-center gap-2 border-b-2 border-accent pb-2 text-sm font-bold uppercase tracking-[0.16em] text-primary">
           {dict.marketing.eyebrow}
         </p>
+
+        {/* Hero heading */}
         <h1
           id="hero-heading"
-          className="font-display text-balance text-4xl font-semibold leading-tight text-stone-900 sm:text-5xl"
+          className="font-sans text-balance text-4xl font-black uppercase leading-none tracking-[-0.01em] text-foreground sm:text-5xl lg:text-6xl"
         >
           {dict.marketing.headline}
         </h1>
-        <p className="mt-5 text-pretty text-lg leading-relaxed text-stone-600 sm:text-xl">
+
+        {/* Decorative rule */}
+        <div className="mx-auto mt-7 flex items-center justify-center gap-3">
+          <span className="h-px flex-1 max-w-20 bg-border" aria-hidden="true" />
+          <span className="h-1.5 w-1.5 rotate-45 bg-accent" aria-hidden="true" />
+          <span className="h-px flex-1 max-w-20 bg-border" aria-hidden="true" />
+        </div>
+
+        {/* Subline */}
+        <p className="mt-6 text-pretty text-lg leading-relaxed text-foreground/75 sm:text-xl">
           {dict.marketing.subline}
         </p>
 
-        <div className="mt-8 sm:mt-10">
+        {/* Countdown */}
+        <div className="mt-10 sm:mt-12">
           <SeasonCountdown
             endsAtIso={seasonEndIso}
             labels={dict.countdown}
@@ -36,19 +52,26 @@ export function LandingHero({ dict, seasonEndIso, staticEndLabel }: Props) {
           />
         </div>
 
+        {/* Primary CTA — directly downloads the coupon PDF */}
         <div className="mt-10 flex flex-col items-center gap-3">
-          <a
-            href="#featured-suits"
-            className="inline-flex min-h-[48px] min-w-[200px] items-center justify-center rounded-xl bg-stone-900 px-8 py-3.5 text-base font-semibold text-stone-50 shadow-lg ring-1 ring-stone-800/30 transition hover:bg-stone-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-stone-900"
+          <ButtonLink
+            href={`/api/coupon-pdf?locale=${locale}`}
+            size="lg"
+            className="min-w-[220px] text-sm font-black uppercase tracking-widest"
           >
             {dict.marketing.ctaPrimary}
-          </a>
-          <span className="text-xs text-stone-500">
+          </ButtonLink>
+          {/* Scroll hint to suit catalog */}
+          <a
+            href="#featured-suits"
+            className="text-sm font-medium text-foreground/60 underline-offset-2 hover:underline"
+          >
             {dict.marketing.ctaPrimaryHint}
-          </span>
+          </a>
         </div>
 
-        <p className="mx-auto mt-8 max-w-md text-sm leading-relaxed text-stone-500">
+        {/* Footnote */}
+        <p className="mx-auto mt-8 max-w-md text-sm leading-relaxed text-muted-foreground">
           {dict.marketing.footnote}
         </p>
       </div>

@@ -18,7 +18,7 @@ const DEFAULT_STORE_ADDRESS =
   "166 S Texas Blvd, Weslaco, TX, United States, 78596";
 const DEFAULT_MAPS_URL =
   "https://maps.google.com/?q=166+S+Texas+Blvd,+Weslaco,+TX+78596";
-const DEFAULT_WHATSAPP_PHONE = "9569684500";
+const DEFAULT_WHATSAPP_PHONE = "9569759400";
 
 function normalizePhone(raw: string): string {
   const digits = raw.replace(/\D/g, "");

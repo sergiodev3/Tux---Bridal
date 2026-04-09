@@ -1,13 +1,128 @@
 @import "tailwindcss";
 
 @theme {
+  /* Typography */
   --font-family-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
   --font-family-display:
     var(--font-cormorant), ui-serif, Georgia, "Times New Roman", serif;
+
+  /* ── Light palette ─────────────────────────────────────────────────────── */
+  /* Warm ivory page surface — formal, not clinical */
+  --color-background: #f8f5ef;
+  --color-foreground: #1a1f2e;
+
+  /* Crisp white card faces — clear separation from page */
+  --color-card: #ffffff;
+  --color-card-foreground: #1a1f2e;
+
+  /* Deep formal navy — JFW anchor color, primary CTAs */
+  --color-primary: #1e2d4a;
+  --color-primary-foreground: #f5f1ea;
+
+  /* Cream secondary */
+  --color-secondary: #edeae3;
+  --color-secondary-foreground: #2a2e3d;
+
+  /* Champagne gold accent — eyebrows, badges, premium highlights */
+  /* Darkened to #8c6e2e for WCAG AA contrast on white/sky-50 */
+  --color-accent: #8c6e2e;
+  --color-accent-foreground: #fdf8ee;
+
+  /* Muted warm gray */
+  --color-muted: #e8e4dc;
+  /* Darkened from #6b6560 for better legibility on light backgrounds */
+  --color-muted-foreground: #3e3934;
+
+  /* Deep ruby destructive */
+  --color-destructive: #922640;
+  --color-destructive-foreground: #fef2f4;
+
+  /* Warm neutral border */
+  --color-border: #cec9bf;
+
+  /* Navy focus ring — same family as primary */
+  --color-ring: #1e2d4a;
+
+  /* Forest green success */
+  --color-success: #1d5e44;
+  --color-success-foreground: #f0faf5;
+
+  /* ── Radii — formal, precise, not bubbly ───────────────────────────── */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.625rem;
+
+  /* ── Shadows — directional, editorial ──────────────────────────────── */
+  --shadow-soft: 0 1px 3px 0 rgb(10 14 30 / 0.08);
+  --shadow-card: 0 6px 28px -8px rgb(10 14 30 / 0.16);
+  --shadow-floating: 0 22px 52px -18px rgb(10 14 30 / 0.34);
+
+  /* ── Motion ─────────────────────────────────────────────────────────── */
+  --animate-fast: 150ms;
+  --animate-base: 210ms;
+
+  /* ── Layout ─────────────────────────────────────────────────────────── */
+  --container-page: 76rem;
+}
+
+/* ── Color scheme: always light ─────────────────────────────────────────── */
+/* This site uses a fixed light design — dark sections (trust block) are    */
+/* intentional layout choices, not a system theme. Removing auto-dark-mode  */
+/* prevents OS dark mode from making text invisible on forced-white sections.*/
+:root {
+  color-scheme: light only;
+}
+
+/* ── Global resets ──────────────────────────────────────────────────────── */
+*,
+::before,
+::after {
+  border-color: var(--color-border);
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+}
+
+::selection {
+  background-color: color-mix(in oklab, var(--color-accent) 32%, transparent);
+}
+
+/* Controlled transition baseline — no transition-all */
+a,
+button,
+input,
+textarea,
+select {
+  transition-duration: var(--animate-fast);
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global focus ring consistent with navy ring token */
+:where(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+#main-content {
+  scroll-margin-top: 6rem;
 }
 
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
   }
 }

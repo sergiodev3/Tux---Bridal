@@ -12,26 +12,39 @@ type Props = Readonly<{
 
 export function FeaturedSuitsSection({ suits, dict, locale }: Props) {
   return (
+    /* Light blue background — clear visual break from white hero above */
     <section
       id="featured-suits"
-      className="scroll-mt-20 px-5 py-14 sm:px-8 sm:py-20"
+      className="scroll-mt-16 bg-sky-50 px-5 py-16 sm:px-8 sm:py-24"
       aria-labelledby="featured-heading"
     >
-      <div className="mx-auto max-w-6xl">
-        <h2
-          id="featured-heading"
-          className="font-display text-center text-3xl font-semibold text-stone-900 sm:text-4xl"
-        >
-          {dict.featured.sectionTitle}
-        </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-center text-sm leading-relaxed text-stone-600 sm:text-base">
-          {dict.featured.sectionSubtitle}
-        </p>
+      <div className="mx-auto max-w-page">
+        {/* Section header — JFW catalog style */}
+        <div className="text-center">
+          {/* Label — navy primary for contrast on sky-50 background */}
+          <p className="mb-3 text-sm font-bold uppercase tracking-[0.16em] text-primary">
+            {dict.featured.sectionSubtitle}
+          </p>
+          <h2
+            id="featured-heading"
+            className="font-sans text-3xl font-black uppercase tracking-[-0.01em] text-foreground sm:text-4xl"
+          >
+            {dict.featured.sectionTitle}
+          </h2>
+          {/* Decorative rule */}
+          <div className="mx-auto mt-4 flex items-center justify-center gap-3">
+            <span className="h-px flex-1 max-w-20 bg-border" aria-hidden="true" />
+            <span className="h-1.5 w-1.5 rotate-45 bg-accent" aria-hidden="true" />
+            <span className="h-px flex-1 max-w-20 bg-border" aria-hidden="true" />
+          </div>
+        </div>
 
         {suits.length === 0 ? (
-          <p className="mx-auto mt-12 max-w-lg rounded-2xl bg-amber-50/80 px-6 py-8 text-center text-sm leading-relaxed text-amber-950 ring-1 ring-amber-200/80">
-            {dict.featured.empty}
-          </p>
+          <div className="mx-auto mt-16 max-w-md border border-border bg-white px-8 py-10 text-center shadow-soft">
+            <p className="text-sm leading-relaxed text-muted-foreground">
+              {dict.featured.empty}
+            </p>
+          </div>
         ) : (
           <FeaturedSuitsGrid suits={suits} dict={dict} locale={locale} />
         )}

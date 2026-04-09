@@ -2,12 +2,12 @@ import type { Dictionary } from "./types";
 
 export const en: Dictionary = {
   meta: {
-    title: "Tux Bridal — Formal suit rentals in Weslaco, TX",
+    title: "Tux & Bridal 4 Less — Formal suit rentals in Weslaco, TX",
     description:
       "Seasonal offers for graduations, quinceañeras, and weddings. Claim your coupon in one tap.",
   },
   shell: {
-    brand: "Tux Bridal",
+    brand: "Tux & Bridal 4 Less",
     localeSwitcherAria: "Language",
     english: "English",
     spanish: "Español",
@@ -16,11 +16,11 @@ export const en: Dictionary = {
     eyebrow: "Graduation & prom season — Weslaco",
     headline: "Your moment deserves the right suit",
     subline:
-      "Exclusive seasonal discounts on curated formal wear. Pick a look, claim your coupon, and visit us in store.",
+      "Exclusive seasonal discounts on curated formal wear. Pick a look, download your coupon, and visit us in store.",
     ctaPrimary: "Get my coupon",
-    ctaPrimaryHint: "Jump to featured suits",
+    ctaPrimaryHint: "Or browse suits below ↓",
     footnote:
-      "Scan the QR on our flyer anytime to return here. Coupon by email — next step after you choose a suit.",
+      "Download your coupon instantly — no sign-up needed.",
   },
   countdown: {
     label: "Offer ends in",
@@ -49,7 +49,7 @@ export const en: Dictionary = {
     title: "Why families trust us",
     line1: "Years serving graduations, quinceañeras, and weddings in the RGV",
     line2:
-      "Formal wear sourced through Jim’s Formal Wear — real designer programs",
+      "Latest Styles Available\nFast & Friendly Service\nLOOKING GREAT 4 PROM",
     line3: "Weslaco, Texas — try on in person, walk out ready for your event",
   },
   contact: {
@@ -88,5 +88,23 @@ export const en: Dictionary = {
     expiresCaption: "Expires:",
     footerEn: "Show this coupon in-store to redeem.",
     footerEs: "Presenta este cupón en tienda para canjearlo.",
+  },
+  giveaway: {
+    eyebrow: "Prom Special — Limited Time",
+    title: "Big Savings + Giveaway",
+    subtitle: "Get $10 OFF your rental AND enter to WIN",
+    discount: "$10 OFF your Prom Tuxedo Rental",
+    winPrize: "a $50 Gift Card to a local restaurant ",
+    winDate: "One winner selected on May 31, 2026.",
+    winFb: "Winner announced on our Facebook page.",
+    extraEntry: "Get one extra entry if you:",
+    entryFollow: "Follow us on Facebook ",
+    entryShare: "Share the post",
+    entryTag: "Tag a friend",
+    showAtRental: "YOU MUST SHOW US AT TIME OF RENTAL",
+    stopBy: "Stop by today and save!",
+    dontMiss: "Don't miss out — Save money AND win big!",
+    cta: "Get My Coupon",
+    close: "Maybe later",
   },
 };

@@ -78,4 +78,22 @@ export type Dictionary = {
     footerEn: string;
     footerEs: string;
   };
+  giveaway: {
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+    discount: string;
+    winPrize: string;
+    winDate: string;
+    winFb: string;
+    extraEntry: string;
+    entryFollow: string;
+    entryShare: string;
+    entryTag: string;
+    showAtRental: string;
+    stopBy: string;
+    dontMiss: string;
+    cta: string;
+    close: string;
+  };
 };
